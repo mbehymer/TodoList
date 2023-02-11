@@ -2,10 +2,10 @@
   "name": "todolist",
   "version": "1.0.0",
   "description": "A todo list written in TypeScript.",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node server.ts",
     "dev-start": "nodemon server.ts",
     "swagger": "node ./routes/swagger.ts"
   },
@@ -24,7 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongodb": "^5.0.1",
+    "mongodb": "^5.0.0",
     "nodemon": "^2.0.20",
     "swagger-autogen": "^2.23.0",
     "swagger-ui-express": "^4.6.0",
