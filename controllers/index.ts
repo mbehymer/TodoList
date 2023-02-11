@@ -1,7 +1,7 @@
-const mongodb = require('../db/connect.ts');
 const ObjectId = require('mongodb').ObjectId;
+const mongodb = require('../db/connect.ts');
 
-const getTodos = async (req:any, res:any, next:any) => {
+const getTodos = async (req, res, next) => {
     try {
         const result = await mongodb.getDb().db('todo').collection('todolist').find();
         result.toArray().then((lists) => {
@@ -26,7 +26,7 @@ const getSingle = async (req, res, next) => {
 
 const insertTodo = async (req, res, next) => {
     
-    let person: Object = {
+    let person = {
         user: req.body.user,
         todo: req.body.todo
     };
@@ -45,7 +45,7 @@ const insertTodo = async (req, res, next) => {
 const updateTodo = async (req, res, next) => {
     
     let id = new ObjectId(req.params.id);
-    let update: Object = {
+    let update = {
         user: req.body.user,
         todo: req.body.todo
     };
