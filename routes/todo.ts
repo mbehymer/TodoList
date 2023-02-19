@@ -5,12 +5,12 @@ const todosFunc = require('../controllers/index.ts');
 
 router.get('/', todosFunc.getTodos);
 
-router.get('/:id', todosFunc.getSingle);
+router.get('/:user', todosFunc.getSingle);
 
 router.post('/', todosFunc.insertTodo);
 
-router.put('/:id', todosFunc.updateTodo);
+router.put('/:user', todosFunc.updateTodo);
 
-router.delete('/:id', todosFunc.deleteTodo);
+router.delete('/:user', todosFunc.deleteTodo);
 
 module.exports = router;
