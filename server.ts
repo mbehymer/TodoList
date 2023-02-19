@@ -13,9 +13,10 @@ const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-// })
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+})
 
 app.use('/', require('./routes/index.ts'));
 
@@ -28,7 +29,7 @@ app.use('/', require('./routes/index.ts'));
 //   authRequired: false,
 //   auth0Logout: true,
 //   secret: 'a long, randomly-generated string stored in env',
-//   baseURL: 'http://localhost:3000',
+//   baseURL: 'http://localhost:8080',
 //   clientID: 'HHofeaCYde98KCeURTqMQCESrduPcWIH',
 //   issuerBaseURL: 'https://dev-afch3382ohemd786.us.auth0.com'
 // };
