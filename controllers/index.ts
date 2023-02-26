@@ -33,17 +33,8 @@ const getSingle = async (req, res, next) => {
 const insertTodo = async (req, res, next) => {
     
     try {
-        type Todo = {
-            user: string,
-            monday: Array<string>,
-            tuesday: Array<string>,
-            wednesday: Array<string>,
-            thursday: Array<string>,
-            friday: Array<string>,
-            saturday: Array<string>,
-            sunday: Array<string>
-        };
-        let todo:Todo = {
+        
+        let todo = {
             user: req.body.user,
             monday: req.body.monday,
             tuesday: req.body.tuesday,
@@ -78,17 +69,8 @@ const insertTodo = async (req, res, next) => {
 const updateTodo = async (req, res, next) => {
     
     try {
-        type Todo = {
-        user: string,
-        monday: Array<string>,
-        tuesday: Array<string>,
-        wednesday: Array<string>,
-        thursday: Array<string>,
-        friday: Array<string>,
-        saturday: Array<string>,
-        sunday: Array<string>
-        };
-        let user:Todo = req.params.user;
+        
+        let user = req.params.user;
         let update = {
             user: req.body.user,
             monday: req.body.monday,
