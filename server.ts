@@ -13,6 +13,28 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.PORT || 8080;
 
+
+const { auth } = require('express-openid-connect');
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'https://mbehymertodolist.onrender.com',
+  clientID: '54ZMLZ30mXvoVK7dLaAtYAFDKAinEJXb',
+  issuerBaseURL: 'https://dev-afch3382ohemd786.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -44,11 +66,11 @@ app.use('/', require('./routes/index.ts'));
 //   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 // });
 
-// const { requiresAuth } = require('express-openid-connect');
+const { requiresAuth } = require('express-openid-connect');
 
-// app.get('/profile', requiresAuth(), (req, res) => {
-//   res.send(JSON.stringify(req.oidc.user));
-// });
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 
 
 
